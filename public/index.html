@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../src/vue.min.js"></script>
+  <link rel="stylesheet" href="../src/styles/reset.css">
+  <link rel="stylesheet" href="../src/styles/styles.css">
+  <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700&display=swap" rel="stylesheet">
+  <title>Techno</title>
+</head>
+<body>
+  <div id="app">
+    <section class="products">
+      <ul class="product-list">
+        <li class="product-list__item" 
+            v-for="item in products"
+            :key="item.id"
+            @click="fetchProduct(item.id)"
+          >
+          <img class="product-list__item-image" 
+            :src="item.img" 
+            :alt="item.name"
+          >
+          <div class="product-content">
+            <span class="product-content__price">{{item.preco | formatedPrice}}</span>
+            <h2 class="product-content__name">{{item.nome}}</span>
+          </div>
+        </li>
+      </ul>
+    </section>
+    <div class="modal" v-if="product">
+      <div class="modal__container">
+        <figure class="modal__container-image">
+          <img :src="product.img" :alt="product.name">
+        </figure>        
+        <div class="modal__content">
+          <span class="modal__content-price">{{product.preco}}</span>
+          <h2 class="modal__content-name">{{product.nome}}</h2>
+          <p class="modal__content-description">{{product.descricao}}</p>
+          <button class="modal__content-btn">Adicionar Item</button>
+        </div>
+        <div class="modal__reviews">
+          <h2 class="modal__reviews-subtitle">Avaliações</h2>
+          <ul class="modal__reviews-list">
+            <li class="modal__reviews-list-item"
+              v-for="review in product.reviews"
+            >
+              <p class="modal__reviews-list-item__text">{{review.descricao}}</p>
+              <span class="modal__reviews-list-item__name">{{review.nome}} | {{review.estrelas}} estrelas</span>
+            </li> 
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="../src/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,112 @@
+body{
+  background: linear-gradient(to right ,#1a1a1a 30%, #ffff 30%);
+  font-family: 'Noto Serif';
+}
+
+#app {
+  padding: 0 80px;
+}
+
+.products{
+  max-width: 900px;
+  margin: 100px auto 0 auto;  
+}
+
+.product-list__item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  background-color: #fff;
+  box-shadow: 0 0 2rem rgba(0,0,0,.1);
+}
+
+
+.product-list__item-image{
+  max-width: 300px;
+  margin-right: 40px;
+}
+
+.product-content__name{
+  font-size: 3rem;
+  line-height: 1;
+}
+.product-content__price{
+  color: rgb(0, 0, 0, .5);
+}
+
+
+.modal{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 80px;
+}
+
+.modal::before{
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.modal__container{
+  position: relative;
+  background: linear-gradient(to right, transparent 250px, #ffff 250px);
+  z-index: 1;
+  display: grid;
+  align-items: end;
+  grid-gap: 50px;
+  padding: 0 50px 50px 0;
+}
+
+.modal__container-image{
+  margin-top: 50px;
+  box-shadow: 0px 3px 4px rgba(0,0,0,0.1), 0px 4px 10px rgba(0,0,0,.2);
+}
+.modal__container-image img{
+  max-width: 300px;
+  display: block;
+}
+
+.modal__content{
+  max-width: 600px;
+  grid-column: 2;
+}
+
+.modal__content-name{
+  font-size: 3rem;
+}
+.modal__content-btn{
+  margin-top: 80px;
+  background-color: #000;
+  cursor: pointer;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  padding: 10px 25px;
+  font-family: "Noto Serif";
+  transition: transform 200ms ease-in-out;
+}
+
+.modal__content-btn:hover{
+  transform: scale(1.02);
+}
+
+.modal__content-btn:active{
+  transform: scale(1.1);
+}
+
+.modal__reviews{
+  grid-column: 2;
+}
+
+.modal__reviews-list-item{
+  border-bottom: 1px solid rgba(0,0,0,.1)
+}
