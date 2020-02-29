@@ -1,8 +1,13 @@
 # Techno Vue
 
+![](./techno-vue.png)
+
 Project developed with vue without component concepts just by opening an instance of Vue and using the html itself to make changes to the DOM
 
 
-## Using
+## Usage
 
 Just clone the repository and open the `index.html`.
+
+
+
