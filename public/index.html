@@ -11,12 +11,17 @@
 </head>
 <body>
   <div id="app">
+    <header class="header">
+      <img class="header__logo" src="../src/assets/techno.svg" alt="Techno">
+      <div class="header__cart" @click="minicartToggle = true">{{minicartTotal | formatedPrice}} | {{minicart.length}} </div>
+    </header>
+
     <section class="products">
       <ul class="product-list">
         <li class="product-list__item" 
             v-for="item in products"
             :key="item.id"
-            @click="fetchProduct(item.id)"
+            @click="openModal(item.id)"
           >
           <img class="product-list__item-image" 
             :src="item.img" 
@@ -29,16 +34,28 @@
         </li>
       </ul>
     </section>
-    <div class="modal" v-if="product">
+    <div class="modal" @click="closeModal" v-if="product">
       <div class="modal__container">
         <figure class="modal__container-image">
           <img :src="product.img" :alt="product.name">
         </figure>        
         <div class="modal__content">
-          <span class="modal__content-price">{{product.preco}}</span>
+          <button @click="product = false" class="modal__content-close">X</button>
+          <span class="modal__content-price">{{product.preco | formatedPrice}}</span>
           <h2 class="modal__content-name">{{product.nome}}</h2>
           <p class="modal__content-description">{{product.descricao}}</p>
-          <button class="modal__content-btn">Adicionar Item</button>
+          <button class="modal__content-btn" 
+            @click="addItem"
+            v-if="product.estoque > 0"
+          >
+            Adicionar Item
+          </button>
+          <button class="modal__content-btn--out-stock"  
+            v-else
+            disabled
+          >
+            Produto Esgotado
+          </button>
         </div>
         <div class="modal__reviews">
           <h2 class="modal__reviews-subtitle">Avaliações</h2>
@@ -52,6 +69,30 @@
           </ul>
         </div>
       </div>
+    </div>
+    <section class="minicart-modal" 
+      :class="{'is--active': minicartToggle}" 
+      @click="closeCart"
+    >
+      <div class="minicart-modal__container">
+        <button class="minicart-modal__close" @click="minicartToggle = false">X</button>
+        <h2 class="minicart-modal__title"> Carrinho </h2>
+        <div class="minicart-modal__content" v-if="minicart.length > 0">
+          <ul class="minicart-modal__list">
+            <li class="minicart-modal__item" v-for="(item, index) in minicart">
+              <h3 class="minicart-modal__item-name">{{item.nome}}</h3>
+              <span class="minicart-modal__item-price">{{item.preco | formatedPrice}}</span>
+              <button class="minicart-modal__item-remove" @click="removeItem(index)">X</button>
+            </li>
+          </ul>
+          <p class="minicart-modal__total">{{minicartTotal | formatedPrice}}</p>
+          <button class="minicart-modal__buy">Finalizar Compra</button>
+        </div>
+        <p v-else class="minicart-modal__empy">Carrinho Vazio</p>
+      </div>
+    </section>
+    <div class="alert" :class="{'is--active': alertActive}">
+      <p class="alert__message">{{messageAlert}}</p>
     </div>
   </div>
   <script src="../src/app.js"></script>
