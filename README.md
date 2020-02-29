@@ -1,8 +1,13 @@
 # Techno Vue
 
+<br/>
+
 ![](./techno-vue.png)
 
-Project developed with vue without component concepts just by opening an instance of Vue and using the html itself to make changes to the DOM
+
+## Introduction 
+
+Project developed with vue without component concepts just by opening an instance of Vue and using the html itself to make changes to the DOM.
 
 
 ## Usage
