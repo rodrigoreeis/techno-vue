@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="../src/vue.min.js"></script>
-  <link rel="stylesheet" href="../src/styles/reset.css">
-  <link rel="stylesheet" href="../src/styles/styles.css">
+  <script src="./src/vue.min.js"></script>
+  <link rel="stylesheet" href="./src/styles/reset.css">
+  <link rel="stylesheet" href="./src/styles/styles.css">
   <link href="https://fonts.googleapis.com/css?family=Noto+Serif:400,700&display=swap" rel="stylesheet">
   <title>Techno</title>
 </head>
 <body>
   <div id="app">
     <header class="header">
-      <img class="header__logo" src="../src/assets/techno.svg" alt="Techno">
+      <img class="header__logo" src="./src/assets/techno.svg" alt="Techno">
       <div class="header__cart" @click="minicartToggle = true">{{minicartTotal | formatedPrice}} | {{minicart.length}} </div>
     </header>
 
@@ -95,6 +95,6 @@
       <p class="alert__message">{{messageAlert}}</p>
     </div>
   </div>
-  <script src="../src/app.js"></script>
+  <script src="./src/app.js"></script>
 </body>
 </html>
